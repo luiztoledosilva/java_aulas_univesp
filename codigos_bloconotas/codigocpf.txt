@@ -1,0 +1,36 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class Main {
+
+    public static void main(String[] args) throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        Pessoa medico = new Medico(
+                101,
+                "João Canabrava",
+                "123.456.789-10",
+                sdf.parse("10/12/1958"),
+               "12345");
+
+        Pessoa enfermeiro = new Enfermeiro(
+                201,
+                "Juliana de Lisboa",
+                "555.444.333-22",
+                sdf.parse("12/052/1972"),
+                "887312");
+
+        Pessoa paciente = new Paciente(
+                301,
+                "Damião de Albuquerque",
+                "888.333.222-11",
+                sdf.parse("18/02/2010"),
+                "12531/15");
+
+        System.out.println(medico);
+        System.out.println(enfermeiro);
+        System.out.println(paciente);
+
+    }
+}

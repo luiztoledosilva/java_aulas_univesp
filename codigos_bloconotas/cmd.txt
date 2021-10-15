@@ -1,0 +1,22 @@
+       }
+}
+C:\Users\Usuario\Desktop\java-codigo>javac Programa.java
+
+C:\Users\Usuario\Desktop\java-codigo>Programa.Java
+
+C:\Users\Usuario\Desktop\java-codigo>Programa.java
+
+C:\Users\Usuario\Desktop\java-codigo>programa
+'programa' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\Usuario\Desktop\java-codigo>Programa
+'Programa' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\Usuario\Desktop\java-codigo>java Programa
+Ola mundo
+
+C:\Users\Usuario\Desktop\java-codigo>
+
+C:\Users\Usuario\Desktop\java-codigo>type Programa.java /// visualizar no cmd do windows

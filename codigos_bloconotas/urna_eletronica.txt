@@ -1,0 +1,164 @@
+/*-----------------------------------------------------
+  UNIVESP - Universidade Virtual do Estado de São Paulo
+            Disciplina Programação Orientada a Objetos
+  
+  Simulador de urna eletrônica de votação
+  ------------------------------------------------------*/
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("\n");
+
+        Urna urna = Urna.getInstance();
+        urna.implantarFeedback(new Visor());
+        urna.implantarFeedback(new Impressora());    // voto impresso
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+
+            urna.listarCandidatos();
+
+            String opcao = menu(sc);
+            if ("X".equals(opcao)) break;
+
+            int inscricao = obterNumeros(sc, "\nInscrição do candidato?            [0 = voto em branco]");
+
+            urna.desbloquear();
+            urna.registrarVoto(inscricao);
+
+        }
+
+        sc.close();
+        urna.listarApuracao();
+        System.out.println("\n");
+
+    }
+
+    private static void alerta(String mensagem) {
+      System.out.println("\u001B[33m" + mensagem + "\u001B[39m");
+    }
+
+    private static String menu(Scanner sc) {
+
+        System.out.println("\n" + "-".repeat(55));
+        System.out.println("Tecle: L = Liberar urna   X = Finalizar");
+
+        String opcao = "";
+
+        while (true) {
+
+            System.out.print("?: ");
+            opcao = sc.next().toUpperCase();
+            if ("LX".indexOf(opcao) != -1) break;
+
+            alerta("::: opção inválida!\n");
+        }
+
+        return opcao;
+
+    }
+
+    private static int obterNumeros(Scanner sc, String msg) {
+
+      int inscricao;
+
+      //System.out.println("\nInscrição do candidato?            [0 = voto em branco]");
+      System.out.println(msg);
+
+      while (true) {
+
+        try {
+
+          System.out.print("?: ");
+          inscricao = sc.nextInt();
+          System.out.println(); // salta linha
+          
+          return inscricao;
+
+        } catch (InputMismatchException e) {
+        }
+
+        alerta("::: somente números!\n");
+        sc.nextLine();
+
+      }
+
+    }
+
+}
+
+
+https://replit.com/@crvitorino/UrnaEletronica#Main.java
+
+
+
+/* ------------------------
+   UNIVESP - Universidade Virtual do Estado de São Paulo
+            
+             Java e Programação Orientada a Objetos
+                                ------------------------ */
+
+import java.time.LocalDate;
+import java.time.Month;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        CategoriaProfissional analista = new CategoriaProfissional(1, "Analista de Sistemas");
+        CategoriaProfissional frontDev = new CategoriaProfissional(2, "Desenvolvedor Frontend");
+        CategoriaProfissional backDev  = new CategoriaProfissional(3, "Desenvolvedor Backend");
+
+        /* ----------------
+           quando não tem um construtor
+           o valor de cada propriedade tem que ser passada via método setter
+                                                          ------------------ */
+        Funcionario miguel = new Funcionario();
+        miguel.setId(1);
+        miguel.setNome("Miguel");
+        miguel.setSobrenome("de Coimbra");
+        miguel.setDataNascimento(LocalDate.of(1985, Month.JUNE, 8));
+        miguel.setSexo(Sexo.Masculino);
+        miguel.setCategoria(backDev);
+        miguel.setCidade("Pirassununga");
+
+        // tim.setUf("SP"); // código refatorado
+        miguel.setUf(Estado.SP);
+
+
+        Funcionario fabi = new Funcionario();
+        fabi.setId(1);
+        fabi.setNome("Fabiana");
+        fabi.setSobrenome("da Costa");
+        fabi.setDataNascimento(LocalDate.of(1981, Month.JUNE, 8));
+        fabi.setCidade("Salvador");
+        fabi.setSexo(Sexo.Feminino);
+        fabi.setCategoria(frontDev);
+
+        // fabi.setUf("ba"); // código refatorado
+        fabi.setUf(Estado.BA);
+
+
+        System.out.println("\n\n");
+        System.out.println(fabi);
+        System.out.println(miguel);
+        System.out.println("\n\n");
+
+
+        /* -------------
+           Observe que a menos que eu trate no método setter da classe
+           o estado tá recebendo minúsculas e maiúsculas
+
+           Entendeu a importância do enum?
+           ------------- */
+
+    }
+}
+
+https://replit.com/@crvitorino/ClasseFuncionario#Main.java

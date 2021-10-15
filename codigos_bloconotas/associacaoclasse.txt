@@ -1,0 +1,98 @@
+package com.devmedia.model;
+
+public class Carro {
+
+      private String modelo;
+      private String placa;
+      private int ano;
+      private float valor;
+
+      public String getModelo() {
+            return modelo;
+      }
+
+      public void setModelo(String modelo) {
+            this.modelo = modelo;
+      }
+
+      public String getPlaca() {
+            return placa;
+      }
+
+      public void setPlaca(String placa) {
+            this.placa = placa;
+      }
+
+      public int getAno() {
+            return ano;
+      }
+
+      public void setAno(int ano) {
+            this.ano = ano;
+      }
+
+      public float getValor() {
+            return valor;
+      }
+
+      public void setValor(float valor) {
+            this.valor = valor;
+      }
+
+}
+
+package com.devmedia.model;
+
+import java.util.Date;
+
+public class Pessoa {
+
+      private String nome;
+      private String endereco;
+      private String telefone;
+      private Date dataNascimento;
+
+      // Relacionamento com a classe Carro
+      private Carro carro;
+
+      public String getNome() {
+            return nome;
+      }
+
+      public void setNome(String nome) {
+            this.nome = nome;
+      }
+
+      public String getEndereco() {
+            return endereco;
+      }
+
+      public void setEndereco(String endereco) {
+            this.endereco = endereco;
+      }
+
+      public String getTelefone() {
+            return telefone;
+      }
+
+      public void setTelefone(String telefone) {
+            this.telefone = telefone;
+      }
+
+      public Date getDataNascimento() {
+            return dataNascimento;
+      }
+
+      public void setDataNascimento(Date dataNascimento) {
+            this.dataNascimento = dataNascimento;
+      }
+
+      public Carro getCarro() {
+            return carro;
+      }
+
+      public void setCarro(Carro carro) {
+            this.carro = carro;
+      }
+
+}

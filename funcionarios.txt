@@ -1,0 +1,64 @@
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class Funcionario {
+
+    private Integer id;
+    private String nome;
+    private String sobrenome;
+    private LocalDate dataNascimento;
+    private CategoriaProfissional categoria;
+    private Sexo sexo;
+    private String cidade;
+    private Estado uf;
+
+    public String getNomeCompleto() {
+        return getNome().trim() + " " + getSobrenome();
+    }
+
+    public long getIdade() {
+        if (getDataNascimento() == null) return -1;
+        return ChronoUnit.YEARS.between(dataNascimento, LocalDate.now());
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Olá eu sou %s %s, tenho %d ano%s e sou da cidade de %s/%s",
+                Sexo.Masculino.equals(getSexo()) ? "o" : "a",
+                getNomeCompleto(),
+                getIdade(), getIdade() > 1 ? "s" : "",
+                getCidade(),
+                getUf()
+        );
+    }
+
+    /*  -----------------
+        Getters and Setters
+             -------------- */
+
+    public Integer getId() {return id;}
+    public void setId(Integer id) {this.id = id;}
+
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
+
+    public String getSobrenome() {return sobrenome;}
+    public void setSobrenome(String sobrenome) {this.sobrenome = sobrenome;}
+
+    public LocalDate getDataNascimento() {return dataNascimento;}
+    public void setDataNascimento(LocalDate dataNascimento) {this.dataNascimento = dataNascimento;}
+
+    public Sexo getSexo() {return sexo;}
+    public void setSexo(Sexo sexo) {this.sexo = sexo;}
+
+    public Estado getUf() {return uf;}
+    public void setUf(Estado uf) {this.uf = uf;}
+
+    public String getCidade() {return cidade;}
+    public void setCidade(String cidade) {this.cidade = cidade;}
+
+    public CategoriaProfissional getCategoria() {return categoria;}
+    public void setCategoria(CategoriaProfissional categoria) {this.categoria = categoria;}
+
+}
